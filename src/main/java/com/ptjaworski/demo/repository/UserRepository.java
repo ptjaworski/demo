@@ -1,4 +1,9 @@
 package com.ptjaworski.demo.repository;
 
-public class UserRepository {
+
+import com.ptjaworski.demo.model.UserEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+
 }
