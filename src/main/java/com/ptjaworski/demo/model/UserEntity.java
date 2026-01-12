@@ -1,8 +1,9 @@
 package com.ptjaworski.demo.model;
 
 import jakarta.persistence.*;
-@Table(name = "users")
+
 @Entity
+@Table(name = "users")
 public class UserEntity {
     @Id
     @Column(name = "id")

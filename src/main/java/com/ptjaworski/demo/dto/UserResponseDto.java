@@ -1,4 +1,9 @@
 package com.ptjaworski.demo.dto;
 
-public class UserResponseDto {
-}
+public record UserResponseDto (
+        Long id,
+        String firstName,
+        String lastName,
+        String username,
+        String email
+) {}

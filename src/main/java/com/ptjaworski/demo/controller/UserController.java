@@ -1,5 +1,7 @@
 package com.ptjaworski.demo.controller;
 
+import com.ptjaworski.demo.dto.UserRequestDto;
+import com.ptjaworski.demo.dto.UserResponseDto;
 import com.ptjaworski.demo.model.User;
 import com.ptjaworski.demo.model.UserEntity;
 import com.ptjaworski.demo.service.UserService;
@@ -21,7 +23,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("")
+    @GetMapping()
     public ResponseEntity<List<User>> getAllUsers() {
         log.info("getAllUsers called");
         return ResponseEntity.status(HttpStatus.OK).body(userService.getAllUsers());
@@ -35,8 +37,10 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String postUser(@RequestBody UserEntity userEntity) {
-        return "Post User " + userEntity;
+    public ResponseEntity<UserResponseDto> postUser(@RequestBody UserRequestDto userToCreate) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header("123", "123")
+                .body(UserService.registerUser(userToCreate));
     }
 
     @PutMapping("/update/{id}")
